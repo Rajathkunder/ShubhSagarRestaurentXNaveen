@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="/css/views/home.style.css" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+      href="https://www.loopple.com/css/vendor/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://www.loopple.com/css/tailwind/app.css?v=1.0.0"
+      rel="stylesheet"
+    />
+    <link href="" id="google-font-url" rel="stylesheet" />
+    <link
+      href="https://www.loopple.com/css/vendor/choices-navbar.min.css"
+      rel="stylesheet"
+    />
+    <!-- CSS Links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/Loopple/loopple-public-assets@main/motion-tailwind/css/leaflet.css"
+    />
+    <!-- Main CSS Link -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.statically.io/gh/Loopple/loopple-public-assets/main/motion-tailwind/motion-tailwind.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="font-body"
+    style="background-color: #fff"
+    data-framework="tailwind"
+  >
+    <div class="container mx-auto draggable" draggable="true">
+      <%- include('partials/header') %>
+    </div>
+      <div class="max-w-3xl mx-auto mb-16">
+        <h3
+          class="text-4xl font-extrabold text-center text-dark-grey-900 font-display mb-4"
+        >
+          Contact Us
+        </h3>
+        <p
+          class="text-base font-medium leading-7 text-center text-dark-grey-600"
+        >
+          We'd love to hear from you! Whether you have a question about our
+          menu, want to make a reservation, or need to provide feedback, please
+          don't hesitate to reach out. Our team is here to ensure you have the
+          best dining experience possible.
+        </p>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="max-w-2xl mx-auto">
+        <form class="bg-white rounded-2xl shadow-xl p-8 space-y-6">
+          <!-- Name Fields -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label
+                for="firstName"
+                class="block text-sm font-medium text-dark-grey-900 mb-2"
+              >
+                First Name *
+              </label>
+              <input
+                type="text"
+                id="firstName"
+                required
+                class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition-all font-['Poppins']"
+                placeholder="John"
+              />
+            </div>
+            <div>
+              <label
+                for="lastName"
+                class="block text-sm font-medium text-dark-grey-900 mb-2"
+              >
+                Last Name *
+              </label>
+              <input
+                type="text"
+                id="lastName"
+                required
+                class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition-all font-['Poppins']"
+                placeholder="Doe"
+              />
+            </div>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="space-y-6">
+            <div>
+              <label
+                for="email"
+                class="block text-sm font-medium text-dark-grey-900 mb-2"
+              >
+                Email Address *
+              </label>
+              <input
+                type="email"
+                id="email"
+                required
+                class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition-all font-['Poppins']"
+                placeholder="john.doe@example.com"
+              />
+            </div>
+            <div>
+              <label
+                for="phone"
+                class="block text-sm font-medium text-dark-grey-900 mb-2"
+              >
+                Phone Number *
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                required
+                class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition-all font-['Poppins']"
+                placeholder="+91 98765 43210"
+              />
+            </div>
+          </div>
+
+          <!-- Reason for Contact -->
+          <div>
+            <label
+              for="reason"
+              class="block text-sm font-medium text-dark-grey-900 mb-2"
+            >
+              Reason for Contact *
+            </label>
+            <select
+              id="reason"
+              required
+              class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition-all font-['Poppins']"
+            >
+              <option value="">Select a reason</option>
+              <option value="reservation">Make a Reservation</option>
+              <option value="feedback">Feedback</option>
+              <option value="inquiry">General Inquiry</option>
+              <option value="catering">Catering Service</option>
+            </select>
+          </div>
+
+          <!-- Message -->
+          <div>
+            <label
+              for="message"
+              class="block text-sm font-medium text-dark-grey-900 mb-2"
+            >
+              Your Message *
+            </label>
+            <textarea
+              id="message"
+              required
+              rows="4"
+              class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition-all font-['Poppins']"
+              placeholder="Please write your message here..."
+            ></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="pt-4">
+            <button
+              type="submit"
+              class="w-full bg-orange-500 text-white font-medium py-4 rounded-lg hover:bg-orange-600 transition-colors font-['Poppins'] text-lg shadow-lg hover:shadow-xl"
+            >
+              Send Message
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <%- include('partials/footer') %>
+  </body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up - ShubhSagar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://www.loopple.com/css/vendor/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="font-body" style="background-color: #fff">
+    <div
+      class="min-h-screen flex flex-col items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8"
+    >
+      <!-- Logo -->
+      <div class="mb-10">
+        <img
+          class="mx-auto h-20 w-auto"
+          src="/images/ShubhSagarlogo.png"
+          alt="Logo"
+        />
+      </div>
+
+      <!-- Sign Up Form Container -->
+      <div class="max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow-md">
+        <div>
+          <h2
+            class="text-4xl font-extrabold text-center text-dark-grey-900 font-display"
+          >
+            Create Account
+          </h2>
+          <p
+            class="mt-2 text-base font-medium leading-7 text-center text-dark-grey-600"
+          >
+            Join us today! Fill in your details below
+          </p>
+        </div>
+
+        <form class="mt-8 space-y-6">
+          <div class="rounded-md shadow-sm space-y-4">
+            <div>
+              <label for="signup-name" class="sr-only">Full Name</label>
+              <input
+                id="signup-name"
+                name="name"
+                type="text"
+                required
+                class="appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
+                placeholder="Full Name"
+              />
+            </div>
+
+            <div>
+              <label for="signup-phone" class="sr-only">Phone Number</label>
+              <input
+                id="signup-phone"
+                name="phone"
+                type="tel"
+                required
+                class="appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
+                placeholder="Phone Number"
+              />
+            </div>
+
+            <div>
+              <label for="signup-email" class="sr-only">Email address</label>
+              <input
+                id="signup-email"
+                name="email"
+                type="email"
+                required
+                class="appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
+                placeholder="Email address"
+              />
+            </div>
+
+            <div>
+              <label for="signup-password" class="sr-only"
+                >Create Password</label
+              >
+              <input
+                id="signup-password"
+                name="password"
+                type="password"
+                required
+                class="appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
+                placeholder="Create Password"
+              />
+            </div>
+
+            <div>
+              <label for="signup-confirm-password" class="sr-only"
+                >Confirm Password</label
+              >
+              <input
+                id="signup-confirm-password"
+                name="confirm-password"
+                type="password"
+                required
+                class="appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 focus:z-10 sm:text-sm"
+                placeholder="Confirm Password"
+              />
+            </div>
+          </div>
+
+          <div class="flex items-center">
+            <input
+              id="terms"
+              name="terms"
+              type="checkbox"
+              required
+              class="h-4 w-4 text-yellow-500 focus:ring-yellow-500 border-gray-300 rounded"
+            />
+            <label for="terms" class="ml-2 block text-sm text-dark-grey-600">
+              I agree to the
+              <a href="#" class="text-yellow-500 hover:text-yellow-600"
+                >Terms of Service</a
+              >
+              and
+              <a href="#" class="text-yellow-500 hover:text-yellow-600"
+                >Privacy Policy</a
+              >
+            </label>
+          </div>
+
+          <div>
+            <button
+              type="submit"
+              class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-semibold rounded-lg text-white bg-yellow-500 hover:bg-yellow-600 border border-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-colors duration-300"
+            >
+              Create Account
+            </button>
+          </div>
+
+          <div class="relative py-4">
+            <div class="absolute inset-0 flex items-center">
+              <div class="w-full border-t border-gray-300"></div>
+            </div>
+            <div class="relative flex justify-center text-sm">
+              <span class="px-2 bg-white text-dark-grey-600"
+                >Or sign up with</span
+              >
+            </div>
+          </div>
+
+          <div>
+            <button
+              type="button"
+              class="w-full flex justify-center items-center px-4 py-3 border border-gray-300 rounded-lg shadow-sm bg-white text-sm font-medium text-dark-grey-900 hover:bg-gray-50 transition-colors duration-300"
+            >
+              <img
+                class="h-5 w-5 mr-2"
+                src="https://www.svgrepo.com/show/475656/google-color.svg"
+                alt="Google logo"
+              />
+              Sign up with Google
+            </button>
+          </div>
+
+          <div class="text-center">
+            <p class="text-sm text-dark-grey-600">
+              Already have an account?
+              <a
+                href="/login"
+                class="font-medium text-yellow-500 hover:text-yellow-600"
+              >
+                Sign in
+              </a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
