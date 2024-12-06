@@ -10,6 +10,7 @@ const {
   remove,
   get,
   child,
+  update,
 } = require("firebase/database");
 
 const adminRouter = express.Router();
@@ -124,12 +125,25 @@ adminRouter.post("/update-food/:id", upload.single("foodImage"), async (req, res
   try {
     const foodId = req.params.id;
     const { foodName, foodPrice, foodDescription, foodCategory, foodOriginalPrice, isBestSeller } = req.body;
-  
 
     if (!foodName || !foodPrice || !foodDescription || !foodCategory || !foodOriginalPrice) {
       return res.status(400).send("Food name, price, description, category, and original price are required.");
     }
 
+    // Fetch current food data from Firebase
+    const foodRef = ref(database, `foods/${foodId}`);
+    const snapshot = await get(foodRef);
+
+    if (!snapshot.exists()) {
+      return res.status(404).send("Food item not found.");
+    }
+
+    const currentFood = snapshot.val();
+
+    // Determine the image path to save (use existing image if no new image is uploaded)
+    const imagePath = req.file ? req.file.path : currentFood.imagePath;
+
+    // Build the updated food object
     const updates = {
       name: foodName,
       price: foodPrice,
@@ -137,11 +151,11 @@ adminRouter.post("/update-food/:id", upload.single("foodImage"), async (req, res
       description: foodDescription, // Updated description field
       category: foodCategory, // Updated category field
       isBestSeller: isBestSeller === "on", // Update best seller status (true if checked)
-      
+      imagePath, // Preserve or update imagePath
     };
 
     // Update food in the database
-    await set(ref(database, `foods/${foodId}`), updates);
+    await set(foodRef, updates);
 
     res.redirect("/admin/dashboard");
   } catch (error) {
@@ -149,6 +163,7 @@ adminRouter.post("/update-food/:id", upload.single("foodImage"), async (req, res
     res.status(500).send("Error updating food item.");
   }
 });
+
 
 // Delete food item
 adminRouter.post("/delete-food/:id", async (req, res) => {
@@ -197,7 +212,7 @@ adminRouter.get("/edit-reservation/:id", async (req, res) => {
 
   // Fetch reservation from Firebase by ID
   const reservation = await getReservationById(reservationId);
-  
+
   if (!reservation) {
     return res.status(404).send("Reservation not found");
   }
@@ -205,34 +220,43 @@ adminRouter.get("/edit-reservation/:id", async (req, res) => {
   // Render the edit page with the reservation data
   res.render("admin/edit-reservation", { reservation, reservationId });
 });
-// Update reservation route
-adminRouter.post("/update-reservation/:id", async (req, res) => {
-  const reservationId = req.params.id;
-  const { Name, numOfPeople, numOfTables, reservationDescription, status } = req.body;
 
-  if (!Name || !numOfPeople || !numOfTables || !reservationDescription || !status) {
-    return res.status(400).send("All fields are required.");
+// Update reservation status route
+adminRouter.post("/update-reservation-status/:id", async (req, res) => {
+  const reservationId = req.params.id;
+  const { status } = req.body;
+
+  if (!status) {
+    return res.status(400).send("Status is required.");
   }
 
   try {
-    // Fetch reservation from Firebase by ID
+    // Fetch the reservation from Firebase by ID
     const reservationRef = ref(database, `reservations/${reservationId}`);
+    const snapshot = await get(reservationRef);
 
-    // Update the reservation in Firebase
-    await set(reservationRef, {
-      Name,
-      numOfPeople,
-      numOfTables,
-      reservationDescription,
-      status,
-    });
+    if (!snapshot.exists()) {
+      console.error(`Reservation with ID ${reservationId} not found.`);
+      return res.status(404).send("Reservation not found.");
+    }
 
-    res.redirect("/admin/dashboard"); // Redirect back to dashboard after update
+    // Log the current reservation data for debugging purposes
+    console.log("Current Reservation Data:", snapshot.val());
+
+    // Update only the status field in the reservation data
+    await update(reservationRef, { status });
+
+    console.log(`Reservation ${reservationId} updated successfully with status: ${status}`);
+
+    res.redirect("/admin/dashboard"); // Reload the page to reflect changes
   } catch (error) {
-    console.error("Error updating reservation:", error);
-    res.status(500).send("Error updating reservation");
+    console.error("Error updating reservation status:", error); // Detailed error log
+    res.status(500).send("Error updating reservation status.");
   }
 });
+
+
+
 
 
 // Delete Reservation
