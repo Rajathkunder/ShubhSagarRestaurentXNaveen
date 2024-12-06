@@ -71,7 +71,7 @@
 
       <!-- Contact Form -->
       <div class="max-w-2xl mx-auto">
-        <form class="bg-white rounded-2xl shadow-xl p-8 space-y-6">
+        <form class="bg-white rounded-2xl shadow-xl p-8 space-y-6" id="contact-form">
           <!-- Name Fields -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
@@ -177,6 +177,7 @@
               placeholder="Please write your message here..."
             ></textarea>
           </div>
+          <div id="response-message"></div>
 
           <!-- Submit Button -->
           <div class="pt-4">
@@ -188,8 +189,11 @@
             </button>
           </div>
         </form>
+        
       </div>
+      
     </div>
     <%- include('partials/footer') %>
+    <script  type="module" src="/js/contact.js"></script>
   </body>
 </html>

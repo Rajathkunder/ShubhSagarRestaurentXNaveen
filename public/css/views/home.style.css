@@ -44,4 +44,10 @@ button {
   .text-center {
     text-align: center;
   }
+  .active {
+    color: #ff0000; /* Highlight color for active menu item */
+    font-weight: bold;
+    border-bottom: 2px solid #ff0000; /* Optional underline */
+  }
+  
 }

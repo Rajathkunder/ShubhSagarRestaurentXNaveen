@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Food</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-100 p-6">
+  <div class="max-w-4xl mx-auto bg-white p-6 shadow rounded">
+    <h1 class="text-2xl font-bold mb-4">Edit Food</h1>
+
+    <!-- Edit Food Form -->
+    <form action="/admin/update-food/<%= foodId %>" method="POST" enctype="multipart/form-data" class="mb-4">
+      
+      <!-- Food Name Input -->
+      <input type="text" name="foodName" value="<%= food.name %>" placeholder="Food Name" class="border p-2 mr-2 rounded" required>
+
+      <!-- Food Price Input -->
+      <input type="number" name="foodPrice" value="<%= food.price %>" placeholder="Current Price" class="border p-2 mr-2 rounded" required>
+
+      <!-- Original Price Input -->
+      <input type="number" name="foodOriginalPrice" value="<%= food.originalPrice %>" placeholder="Original Price" class="border p-2 mr-2 rounded" required>
+
+      <!-- Food Description Input -->
+      <textarea name="foodDescription" placeholder="Food Description" class="border p-2 mr-2 rounded" required><%= food.description %></textarea>
+
+      <!-- Food Category Dropdown -->
+      <select name="foodCategory" class="border p-2 mr-2 rounded" required>
+        <option value="chats" <%= food.category === 'chats' ? 'selected' : '' %>>Chats</option>
+        <option value="snaks" <%= food.category === 'snaks' ? 'selected' : '' %>>Snaks</option>
+        <option value="juice" <%= food.category === 'juice' ? 'selected' : '' %>>Juice</option>
+        <option value="deserts" <%= food.category === 'deserts' ? 'selected' : '' %>>Deserts</option>
+      </select>
+
+      <!-- Display the Current Image (optional) -->
+      <% if (food.imagePath) { %>
+        <div class="mb-4">
+          <p class="text-sm text-gray-700">Current Image:</p>
+          <img src="<%= food.imagePath %>" alt="<%= food.name %>" width="100" class="mb-2">
+          
+        </div>
+      <% } %>
+
+      
+
+      <!-- Best Seller Checkbox -->
+      <div class="flex items-center mb-4">
+        <input type="checkbox" name="isBestSeller" <%= food.isBestSeller ? 'checked' : '' %> class="mr-2">
+        <label for="isBestSeller" class="font-semibold">Best Seller</label>
+      </div>
+
+      <!-- Update Button -->
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Update Food</button>
+    </form>
+  </div>
+</body>
+</html>

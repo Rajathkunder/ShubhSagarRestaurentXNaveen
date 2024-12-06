@@ -1,0 +1,13 @@
+<form action="/admin/update-reservation/<%= reservationId %>" method="POST" class="mb-4">
+    <input type="text" name="Name" value="<%= reservation.Name %>" placeholder="Customer Name" class="border p-2 mr-2 rounded" required>
+    <input type="number" name="numOfPeople" value="<%= reservation.numOfPeople %>" placeholder="Number of People" class="border p-2 mr-2 rounded" required>
+    <input type="number" name="numOfTables" value="<%= reservation.numOfTables %>" placeholder="Number of Tables" class="border p-2 mr-2 rounded" required>
+    <textarea name="reservationDescription" placeholder="Reservation Description" class="border p-2 mr-2 rounded" required><%= reservation.reservationDescription %></textarea>
+    <select name="status" class="border p-2 mr-2 rounded" required>
+      <option value="Free" <%= reservation.status === 'Free' ? 'selected' : '' %>>Free</option>
+      <option value="Occupied" <%= reservation.status === 'Occupied' ? 'selected' : '' %>>Occupied</option>
+      <option value="Pending" <%= reservation.status === 'Pending' ? 'selected' : '' %>>Pending</option>
+    </select>
+    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Update Reservation</button>
+  </form>
+  
